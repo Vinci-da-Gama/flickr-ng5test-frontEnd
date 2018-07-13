@@ -5,8 +5,7 @@
 		"module": "commonjs",
 		"baseUrl": "./",
 		"paths": {
-			"@featCompo/*": ["featCompos/*"],
-			"@formMore/*": ["featureComponents/form-more/*"]
+			"@reactiveForm/*": ["app/shared-modules/reactiveform-common/*"]
 		},
 		"types": []
 	},

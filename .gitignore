@@ -44,3 +44,4 @@ how-to-use.txt
 tslint.json
 ssl/
 yarn.lock
+package-lock.json

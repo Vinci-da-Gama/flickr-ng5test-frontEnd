@@ -13,5 +13,21 @@
 				</a>
 			</li>
 		</ul>
+		<form class="form-inline my-2 my-lg-0" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+			<div class="form-group">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search..." formControlName="searchTermInput" required  aria-label="Search" />
+				<div class="text-danger" *ngIf="searchTermInput.errors && (searchTermInput.dirty || searchTermInput.touched)">
+					<p *ngIf="searchTermInput.errors.required">
+						Search Term is required.
+					</p>
+					<p *ngIf="searchTermInput.errors.pattern">
+						Please input valid Search Term.
+					</p>
+				</div>
+			</div>
+			<button class="btn my-2 my-sm-0" type="submit" [ngClass]="{btn-outline-secondary: !searchForm.valid, btn-outline-success: searchForm.valid}" [disabled]="!searchForm.valid">
+				Search
+			</button>
+		</form>
 	</div>
 </div>
