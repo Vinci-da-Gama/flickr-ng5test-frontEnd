@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpClient } from '@angular/common/http';
+import { HttpRequest, HttpClient, HttpResponse } from '@angular/common/http';
 
 import { environment } from '../../environments/env-const';
 
@@ -12,7 +12,7 @@ export class ImgsService {
 		private httpCli: HttpClient
 	) {}
 
-	fetchInitialImages() {
+	fetchInitialImages(): any {
 		const url = `${this.urlPrefix}/publicseed`;
 		const req = new HttpRequest('GET', url, {
 			reportProgress: true

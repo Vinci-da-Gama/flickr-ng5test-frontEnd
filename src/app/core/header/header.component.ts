@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
+import { SearchImgsService } from '../../../services/search/search-img.service';
+
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html'
@@ -14,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
 	constructor(
 		private _fbr: FormBuilder,
+		private siService: SearchImgsService
 	) { }
 
 	ngOnInit() {
