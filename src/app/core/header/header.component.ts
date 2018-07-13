@@ -6,7 +6,8 @@ import { SearchImgsService } from '../../../services/search/search-img.service';
 
 @Component({
 	selector: 'app-header',
-	templateUrl: './header.component.html'
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 

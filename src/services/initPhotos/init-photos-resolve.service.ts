@@ -14,9 +14,8 @@ export class InitPhotosResolveService implements Resolve<any> {
 
 	resolve( currRoute: ActivatedRouteSnapshot ):
 	Observable<any> | Promise<any> | any  {
-		console.log('17 -- ', currRoute);
 		const initImgs: Observable<HttpResponse<any>> = this.imgsService.fetchInitialImages();
-		console.log('19 -- ', initImgs);
+		console.log('18 -- ', initImgs);
 		return initImgs;
 	}
 
