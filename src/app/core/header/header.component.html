@@ -24,10 +24,10 @@
 						Please input valid Search Term.
 					</p>
 				</div>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" [ngClass]="{btnDisabled : !searchForm.valid}" [disabled]="!searchForm.valid">
+					Search
+				</button>
 			</div>
-			<button class="btn my-2 my-sm-0" type="submit" [ngClass]="{btn-outline-secondary: !searchForm.valid, btn-outline-success: searchForm.valid}" [disabled]="!searchForm.valid">
-				Search
-			</button>
 		</form>
 	</div>
 </div>
