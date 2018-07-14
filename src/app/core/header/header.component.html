@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" [routerLink]="['/']">Interview</a>
+	<a class="navbar-brand" [routerLink]="['/']">{{(staticText | async).text[0]}}</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ng5wpk-navbar-collapse" aria-controls="ng5wpk-navbar-collapse"
 	    aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item" routerLinkActive="active">
 				<a class="nav-link" routerLink="">
-					Home
+					{{(staticText | async).text[1]}}
 				</a>
 			</li>
 		</ul>
@@ -25,7 +25,7 @@
 					</p>
 				</div>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" [ngClass]="{btnDisabled : !searchForm.valid}" [disabled]="!searchForm.valid">
-					Search
+					{{(staticText | async).text[2]}}
 				</button>
 			</div>
 		</form>

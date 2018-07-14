@@ -6,6 +6,6 @@ export interface AppState {
 	text: fromTextReducer.TextState
 }
 
-export const AppReducer: ActionReducerMap<AppState> = {
+export const reducers: ActionReducerMap<AppState> = {
 	text: fromTextReducer.textReducer
 }

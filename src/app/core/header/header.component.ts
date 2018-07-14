@@ -1,8 +1,12 @@
 // import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { SearchImgsService } from '../../../services/search/search-img.service';
+import * as fromTextReducer from '../../../store/text-store/text-reducer';
+import * as fromAppReducer from '../../../store/app-store/app.reducers';
 
 @Component({
 	selector: 'app-header',
@@ -14,15 +18,19 @@ export class HeaderComponent implements OnInit {
 	searchForm: FormGroup;
 	searchTermInput: FormControl;
 	private ALLWHITESPACE = /\S/;
+	staticText: Observable<fromTextReducer.TextState>;
+	gan: String = 'cao';
 
 	constructor(
 		private _fbr: FormBuilder,
-		private siService: SearchImgsService
+		private siService: SearchImgsService,
+		private tStore: Store<fromAppReducer.AppState>
 	) { }
 
 	ngOnInit() {
 		this.createSearchFormControl();
 		this.createSearchFormGroup();
+		this.staticText = this.tStore.select('text');
 	}
 
 	private createSearchFormControl() {
@@ -32,7 +40,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	private createSearchFormGroup() {
-		this.searchForm = new FormGroup({
+		this.searchForm = this._fbr.group({
 			'searchTermInput': this.searchTermInput
 		});
 	}

@@ -1,4 +1,4 @@
-import * as fromTextAction from './text-actions';
+import * as tActions from './text-actions';
 
 export interface TextState {
 	text: string[]
@@ -12,14 +12,15 @@ const initTextState: TextState = {
 	]
 }
 
-export function textReducer(state: TextState = initTextState, action: fromTextAction.TextAction) {
+export function textReducer(state: TextState = initTextState, action: tActions.TextAction) {
 	switch (action.type) {
-		case (fromTextAction.SET_TEXT):
+		case (tActions.SET_TEXT):
 			return {
 				...state,
-				text: [...action.payload]
+				text: [...state.text, ...action.payload]
 			};
 		default:
+			console.log('23 -- ', state);
 			return state;
 	}
 }

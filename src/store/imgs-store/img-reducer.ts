@@ -5,8 +5,5 @@ export interface ImgState {
 	imgs: ImgClass[]
 }
 
-const initImgsState: ImgState = {
-	imgs: [
-
-	]
-}
+/* const initImgsState: ImgState = {
+} */
