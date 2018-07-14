@@ -19,7 +19,12 @@ export class HomeComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.fetchImages();
 		this.imagesState = this.imgStore.select('imgs');
+	}
+
+	private fetchImages() {
+		this.imgStore.dispatch(new imgsActions.FetchImages());
 	}
 
 }

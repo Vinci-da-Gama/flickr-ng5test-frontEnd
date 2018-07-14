@@ -12,13 +12,14 @@ export interface ImgsState {
 
 const initImgsState: ImgsState = {
 	imgs: [
-		new ImgClass('https://rideforroswell.org/wp-content/uploads/2018/01/Flickr-logo-2.png')
+		new ImgClass('')
 	]
 }
 
 export const imgsReducer = (state: ImgsState = initImgsState, action: imgsActions.ImgsActions) => {
 	switch (action.type) {
 		case (imgsActions.SET_IMAGES):
+			console.log('22 -- ', action.payload);
 			return {
 				...state,
 				imgs: [...action.payload]
