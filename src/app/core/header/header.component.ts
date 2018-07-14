@@ -18,8 +18,7 @@ export class HeaderComponent implements OnInit {
 	searchForm: FormGroup;
 	searchTermInput: FormControl;
 	private ALLWHITESPACE = /\S/;
-	staticText: Observable<fromTextReducer.TextState>;
-	gan: String = 'cao';
+	staticTextState: Observable<fromTextReducer.TextState>;
 
 	constructor(
 		private _fbr: FormBuilder,
@@ -30,7 +29,7 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 		this.createSearchFormControl();
 		this.createSearchFormGroup();
-		this.staticText = this.tStore.select('text');
+		this.staticTextState = this.tStore.select('text');
 	}
 
 	private createSearchFormControl() {

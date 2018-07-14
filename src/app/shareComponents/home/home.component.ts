@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { ImgClass } from '../../../contracts/models/img.class';
+import * as imgsActions from '../../../store/imgs-store/imgs-actions';
+import * as fromImgsReducer from '../../../store/imgs-store/img-reducer';
 
 @Component({
 	selector: 'app-home',
@@ -9,17 +12,14 @@ import { ImgClass } from '../../../contracts/models/img.class';
 })
 export class HomeComponent implements OnInit {
 
-	imgs: ImgClass[];
+	imagesState: Observable<fromImgsReducer.ImgsState>;
 
 	constructor(
-		private aRoute: ActivatedRoute,
+		private imgStore: Store<fromImgsReducer.ImgsFeatureState>
 	) {}
 
 	ngOnInit() {
-		this.aRoute.data.subscribe((resolveData: any) => {
-			this.imgs = resolveData['initImgs'].body.data;
-			console.log('21 -- ', this.imgs);
-		});
+		this.imagesState = this.imgStore.select('imgs');
 	}
 
 }

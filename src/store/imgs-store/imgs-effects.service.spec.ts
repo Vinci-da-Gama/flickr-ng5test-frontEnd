@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ImgsEffectsService } from './imgs-effects.service';
+import { ImgsEffects } from './imgs-effects.service';
 
-describe('ImgsEffectsService', () => {
+describe('ImgsEffects', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ImgsEffectsService]
+			providers: [ImgsEffects]
 		});
 	});
 
-	it('should be created', inject([ImgsEffectsService], (service: ImgsEffectsService) => {
+	it('should be created', inject([ImgsEffects], (service: ImgsEffects) => {
 		expect(service).toBeTruthy();
 	}));
 });

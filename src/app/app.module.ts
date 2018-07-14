@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -22,6 +23,7 @@ import { NotFoundModule } from './not-found/not-found.module';
 		HttpClientModule,
 		NgbModule.forRoot(),
 		StoreModule.forRoot(reducers),
+		EffectsModule.forRoot([]),
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		CoreModule,
 		HomeModule,

@@ -12,7 +12,7 @@ const initTextState: TextState = {
 	]
 }
 
-export function textReducer(state: TextState = initTextState, action: tActions.TextAction) {
+export const textReducer = (state: TextState = initTextState, action: tActions.TextAction) => {
 	switch (action.type) {
 		case (tActions.SET_TEXT):
 			return {
@@ -20,7 +20,6 @@ export function textReducer(state: TextState = initTextState, action: tActions.T
 				text: [...state.text, ...action.payload]
 			};
 		default:
-			console.log('23 -- ', state);
 			return state;
 	}
 }

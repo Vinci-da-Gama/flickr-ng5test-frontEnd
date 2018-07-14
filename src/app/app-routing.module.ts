@@ -12,7 +12,7 @@ const appRoutes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(appRoutes, {
-			useHash: true,
+			useHash: true, // for old server.
 			preloadingStrategy: PreloadAllModules
 		})
 	],
