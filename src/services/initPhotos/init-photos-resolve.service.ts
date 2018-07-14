@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { ImgsService } from '../imgs/img.service';
-import { HttpResponse } from '../../../node_modules/@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 
 @Injectable()
 export class InitPhotosResolveService implements Resolve<any> {

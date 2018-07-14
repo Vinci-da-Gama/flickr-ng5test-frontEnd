@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ImgHrefsInterface } from '../../../contracts/interfaces/img-hrefs';
+import { ImgClass } from '../../../contracts/models/img.class';
 
 @Component({
 	selector: 'app-home',
@@ -9,7 +9,7 @@ import { ImgHrefsInterface } from '../../../contracts/interfaces/img-hrefs';
 })
 export class HomeComponent implements OnInit {
 
-	imgs: Array<ImgHrefsInterface>;
+	imgs: ImgClass[];
 
 	constructor(
 		private aRoute: ActivatedRoute,
