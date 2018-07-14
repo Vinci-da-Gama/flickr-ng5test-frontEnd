@@ -6,3 +6,14 @@
     color: $secondary !important;
     border: $secondary !important;
 }
+
+.cover {
+    object-fit: cover;
+    height: 160px;
+}
+
+@media all and (max-width: 576px) {
+    .cover {
+        height: auto;
+    }
+}

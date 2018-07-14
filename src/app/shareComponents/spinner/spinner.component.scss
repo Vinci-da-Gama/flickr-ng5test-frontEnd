@@ -1,6 +1,5 @@
-
-$bgColor: rgba(181, 181, 181, .8);
-$lightOrange: #fe9878;
+$spinnerBgColor: rgba(181, 181, 181, .8);
+$spinnerLightOrange: #fe9878;
 $spinnerBorder: rgba(255,210,200, 0.2);
 
 .loader-container {
@@ -10,7 +9,7 @@ $spinnerBorder: rgba(255,210,200, 0.2);
 	top: 0;
 	left: 0;
 	right: 0;
-	background: $bgColor;
+	background: $spinnerBgColor;
 	z-index: 1;
 }
 
@@ -26,7 +25,7 @@ $spinnerBorder: rgba(255,210,200, 0.2);
 	border-top: 1.1em solid $spinnerBorder;
 	border-right: 1.1em solid $spinnerBorder;
 	border-bottom: 1.1em solid $spinnerBorder;
-	border-left: 1.1em solid $lightOrange;
+	border-left: 1.1em solid $spinnerLightOrange;
 	-webkit-transform: translateZ(0);
 	-moz-transform: translateZ(0);
 	-ms-transform: translateZ(0);

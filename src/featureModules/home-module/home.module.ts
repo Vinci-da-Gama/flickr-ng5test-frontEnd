@@ -10,7 +10,9 @@ import { ImgsEffects } from '../../store/imgs-store/imgs-effects.service';
 import { ImgsService } from '../../services/imgs/img.service';
 
 @NgModule({
-	declarations: [HomeComponent],
+	declarations: [
+		HomeComponent
+	],
 	imports: [
 		CommonModule,
 		StoreModule.forFeature('imgs', imgsReducer),

@@ -1,4 +1,10 @@
-<h1>Test</h1>
-<div>
-	{{(imagesState | async).imgs[0].imgHref}}
+<h3 class="text-center">
+	Images
+</h3>
+<div class="row">
+	<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let img of (imagesState | async).imgs; let i = index;">
+		<div class="card text-white bg-transparent">
+		  <img class="card-img-top img-fluid cover" [src]="img.imgPath" alt="img{{i}}" />
+		</div>
+	</div>
 </div>

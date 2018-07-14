@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
+import _ from 'lodash';
 
 import { ImgsService } from '../../services/imgs/img.service';
 import * as imgsActions from './imgs-actions';

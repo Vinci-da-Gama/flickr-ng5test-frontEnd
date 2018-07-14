@@ -1,5 +1,5 @@
 export class ImgClass {
 	constructor(
-		public imgHref: string = ''
+		public imgPath: string = ''
 	) {}
 }
