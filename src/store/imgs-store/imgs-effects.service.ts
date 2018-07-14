@@ -5,8 +5,6 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
-import { ImgClass } from '../../contracts/models/img.class';
-// import { environment } from '../../environments/env-const';
 import { ImgsService } from '../../services/imgs/img.service';
 import * as imgsActions from './imgs-actions';
 import * as fromImgsReducer from './img-reducer';
@@ -18,16 +16,18 @@ export class ImgsEffects {
 	imgsFetch = this.actions$
 	.ofType(imgsActions.FETCH_IMAGES)
 	.switchMap((action: imgsActions.FetchImages) => {
-		return this.imgsService.fetchInitialImages();
+		return this.imgsService.fetchInitialImages()
 	})
 	.map((res) => {
-		if (!res) {
+		return [...res.data];
+	})
+	.map((images) => {
+		if (!images) {
 			return null;
 		} else {
-			console.log('27 -- ', res);
 			return {
 				type: imgsActions.SET_IMAGES,
-				payload: res.data
+				payload: images
 			}
 		}
 	});

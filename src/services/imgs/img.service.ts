@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/do';
 
 import { environment } from '../../environments/env-const';
+import { ImgClass } from '../../contracts/models/img.class';
 
 @Injectable()
 export class ImgsService {
@@ -12,9 +14,9 @@ export class ImgsService {
 		private httpCli: HttpClient
 	) {}
 
-	fetchInitialImages(): any {
+	fetchInitialImages() {
 		const url = `${environment.urlPrefix}/publicseed`;
-		return this.httpCli.get<any>(url, {
+		return this.httpCli.get<{data: ImgClass[]}>(url, {
 			observe: 'body',
 			responseType: 'json'
 		});

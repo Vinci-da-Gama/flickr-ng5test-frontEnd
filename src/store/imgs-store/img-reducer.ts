@@ -22,7 +22,7 @@ export const imgsReducer = (state: ImgsState = initImgsState, action: imgsAction
 			console.log('22 -- ', action.payload);
 			return {
 				...state,
-				imgs: [...action.payload]
+				imgs: action.payload
 			};
 		default:
 			return state;
