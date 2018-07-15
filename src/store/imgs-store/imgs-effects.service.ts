@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import _ from 'lodash';
 
 import { ImgsService } from '../../services/imgs/img.service';
 import { LoaderService } from '../../services/loader/loader.service';
@@ -34,13 +34,34 @@ export class ImgsEffects {
 		}
 	});
 
-	/* @Effect({ dispatch: false })
-	imgsSearch */
+	@Effect()
+	imgsSearch = this.actions$
+	.ofType(imgsActions.SEARCH_IMAGES)
+	.switchMap((action: imgsActions.SearchImages) => {
+		return this.imgsService.searchByTerm(action.payload);
+	})
+	.map((res) => {
+		return [...res.data];
+	})
+	.map((images) => {
+		// this.loaderService.weatherShowLoader.next(false);
+		console.log('47 -- ', images);
+		if (!images) {
+			return null;
+		} else {
+			this.router.navigate(['/']);
+			return {
+				type: imgsActions.SET_IMAGES,
+				payload: images
+			}
+		}
+	});
 
 	constructor(
 		public actions$: Actions,
 		private imgsService: ImgsService,
 		private loaderService: LoaderService,
+		private router: Router,
 		private store: Store<fromImgsReducer.ImgsFeatureState>
 	) {}
 

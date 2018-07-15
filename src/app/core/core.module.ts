@@ -6,7 +6,6 @@ import { HeaderComponent } from './header/header.component';
 import { SpinnerComponent } from '../shareComponents/spinner/spinner.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoaderService } from '../../services/loader/loader.service';
-import { SearchImgsService } from '../../services/search/search-img.service';
 
 
 @NgModule({
@@ -20,8 +19,7 @@ import { SearchImgsService } from '../../services/search/search-img.service';
 		AppRoutingModule
 	],
 	providers: [
-		LoaderService,
-		SearchImgsService
+		LoaderService
 	],
 	exports: [
 		AppRoutingModule,

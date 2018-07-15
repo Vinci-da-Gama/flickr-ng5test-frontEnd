@@ -22,4 +22,12 @@ export class ImgsService {
 		});
 	}
 
+	searchByTerm(text: string) {
+		const url: string = (`${environment.urlPrefix}/search/${text}`).toString();
+		return this.httpCli.get<DataInterface>(url, {
+			observe: 'body',
+			responseType: 'json'
+		});
+	}
+
 }

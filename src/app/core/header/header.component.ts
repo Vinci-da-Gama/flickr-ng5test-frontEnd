@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { LoaderService } from '../../../services/loader/loader.service';
 import * as fromTextReducer from '../../../store/text-store/text-reducer';
 import * as fromAppReducer from '../../../store/app-store/app.reducers';
-import { SearchImgsService } from '../../../services/search/search-img.service';
+import * as imgsActions from '../../../store/imgs-store/imgs-actions';
 
 @Component({
 	selector: 'app-header',
@@ -24,14 +24,13 @@ export class HeaderComponent implements OnInit {
 	constructor(
 		private _fbr: FormBuilder,
 		private loaderService: LoaderService,
-		private siService: SearchImgsService,
-		private tStore: Store<fromAppReducer.AppState>
+		private store: Store<fromAppReducer.AppState>
 	) { }
 
 	ngOnInit() {
 		this.createSearchFormControl();
 		this.createSearchFormGroup();
-		this.staticTextState = this.tStore.select('text');
+		this.staticTextState = this.store.select('text');
 		this.loaderService.weatherShowLoader.subscribe((isSHowLoader: Boolean) => {
 			this.isSHowLoader = isSHowLoader;
 		});
@@ -50,10 +49,8 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onSubmit(f: FormGroup) {
-		const term = f.value.searchTermInput
-		this.siService.searchByTerm(term)
-			.subscribe((rz) => {
-				console.log('56 -- ', rz);
-			});
+		const term = f.value.searchTermInput;
+		this.store.dispatch(new imgsActions.SearchImages(term));
+		this.searchForm.reset();
 	}
 }
