@@ -1,12 +1,12 @@
-// import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { SearchImgsService } from '../../../services/search/search-img.service';
+import { LoaderService } from '../../../services/loader/loader.service';
 import * as fromTextReducer from '../../../store/text-store/text-reducer';
 import * as fromAppReducer from '../../../store/app-store/app.reducers';
+import { SearchImgsService } from '../../../services/search/search-img.service';
 
 @Component({
 	selector: 'app-header',
@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
 	searchTermInput: FormControl;
 	private ALLWHITESPACE = /\S/;
 	staticTextState: Observable<fromTextReducer.TextState>;
+	isSHowLoader: Boolean = false;
 
 	constructor(
 		private _fbr: FormBuilder,
+		private loaderService: LoaderService,
 		private siService: SearchImgsService,
 		private tStore: Store<fromAppReducer.AppState>
 	) { }
@@ -30,6 +32,9 @@ export class HeaderComponent implements OnInit {
 		this.createSearchFormControl();
 		this.createSearchFormGroup();
 		this.staticTextState = this.tStore.select('text');
+		this.loaderService.weatherShowLoader.subscribe((isSHowLoader: Boolean) => {
+			this.isSHowLoader = isSHowLoader;
+		});
 	}
 
 	private createSearchFormControl() {
@@ -44,7 +49,11 @@ export class HeaderComponent implements OnInit {
 		});
 	}
 
-	onSubmit() {
-
+	onSubmit(f: FormGroup) {
+		const term = f.value.searchTermInput
+		this.siService.searchByTerm(term)
+			.subscribe((rz) => {
+				console.log('56 -- ', rz);
+			});
 	}
 }

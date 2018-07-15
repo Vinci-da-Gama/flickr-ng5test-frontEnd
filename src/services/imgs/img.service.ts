@@ -15,7 +15,7 @@ export class ImgsService {
 	) {}
 
 	fetchInitialImages() {
-		const url = `${environment.urlPrefix}/publicseed`;
+		const url: string = (`${environment.urlPrefix}/publicseed`).toString();
 		return this.httpCli.get<{data: ImgClass[]}>(url, {
 			observe: 'body',
 			responseType: 'json'

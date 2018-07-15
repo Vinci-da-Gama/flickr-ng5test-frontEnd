@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { ImgClass } from '../../../contracts/models/img.class';
-import * as imgsActions from '../../../store/imgs-store/imgs-actions';
-import * as fromImgsReducer from '../../../store/imgs-store/img-reducer';
+import * as imgsActions from '../../store/imgs-store/imgs-actions';
+import * as fromImgsReducer from '../../store/imgs-store/img-reducer';
+import { LoaderService } from '../../services/loader/loader.service';
 
 @Component({
 	selector: 'app-home',
@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
 	imagesState: Observable<fromImgsReducer.ImgsState>;
 
 	constructor(
-		private imgStore: Store<fromImgsReducer.ImgsFeatureState>
+		private imgStore: Store<fromImgsReducer.ImgsFeatureState>,
+		private loaderService: LoaderService
 	) {}
 
 	ngOnInit() {
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	private fetchImages() {
+		this.loaderService.weatherShowLoader.next(true);
 		this.imgStore.dispatch(new imgsActions.FetchImages());
 	}
 

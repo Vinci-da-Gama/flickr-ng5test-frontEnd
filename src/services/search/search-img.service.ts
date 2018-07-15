@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpParams, HttpRequest, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/env-const';
+import { ImgClass } from '../../contracts/models/img.class';
 
 @Injectable()
 export class SearchImgsService {
@@ -13,11 +14,11 @@ export class SearchImgsService {
 	) {}
 
 	searchByTerm(text: string) {
-		const url = `${this.urlPrefix}/search`;
-		const req = new HttpRequest('GET', url, {
-			reportProgress: true, params: new HttpParams().set('term', text)
+		const url: string = (`${environment.urlPrefix}/search/${text}`).toString();
+		return this.httpCli.get<{data: ImgClass[]}>(url, {
+			observe: 'body',
+			responseType: 'json'
 		});
-		return this.httpCli.request(req);
 	}
 
 }

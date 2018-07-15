@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from '../../app/shareComponents/home/home.component';
+import { HomeComponent } from '../../featureCompos/home/home.component';
 
 const userRoute: Routes = [
 	{

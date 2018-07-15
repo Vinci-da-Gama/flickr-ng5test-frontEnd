@@ -5,7 +5,9 @@ import { ReactiveformCommonModule } from '@reactiveForm/reactiveform-common.modu
 import { HeaderComponent } from './header/header.component';
 import { SpinnerComponent } from '../shareComponents/spinner/spinner.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { SearchImgsService } from '../../services/search/search-img.service'
+import { LoaderService } from '../../services/loader/loader.service';
+import { SearchImgsService } from '../../services/search/search-img.service';
+
 
 @NgModule({
 	declarations: [
@@ -18,6 +20,7 @@ import { SearchImgsService } from '../../services/search/search-img.service'
 		AppRoutingModule
 	],
 	providers: [
+		LoaderService,
 		SearchImgsService
 	],
 	exports: [
