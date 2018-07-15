@@ -8,13 +8,12 @@ import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
 	let component: HeaderComponent;
-	let fixture: ComponentFixture < HeaderComponent > ;
+	let fixture: ComponentFixture <HeaderComponent>;
 
 	beforeEach(async (() => {
 		TestBed.configureTestingModule({
 				declarations: [HeaderComponent]
-			})
-			.compileComponents();
+			}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -23,7 +22,7 @@ describe('HeaderComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	/* it('should create', () => {
 		expect(component).toBeTruthy();
-	});
+	}); */
 });

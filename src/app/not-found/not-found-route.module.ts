@@ -8,7 +8,7 @@ const wildcardRoute: Routes = [
 	{
 		path: 'not-found',
 		component: NotfoundPageComponent,
-		data: { message: 'Message From Route Data -- Page not found.' }
+		data: { message: 'Page not found.' }
 	},
 	{
 		path: '**',

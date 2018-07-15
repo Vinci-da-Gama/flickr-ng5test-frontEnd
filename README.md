@@ -1,6 +1,6 @@
 # Photo search
-Fetch Photos
-Search and reload photos
+- Fetch Photos
+- Search and reload photos
 
 # Test locally
 - git clone this project https://github.com/Vinci-da-Gama/flickr-ng5test-frontEnd.git

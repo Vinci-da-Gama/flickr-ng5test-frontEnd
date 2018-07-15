@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
 	let component: HomeComponent;
-	let fixture: ComponentFixture < HomeComponent > ;
+	let fixture: ComponentFixture <HomeComponent>;
 
 	beforeEach(async (() => {
 		TestBed.configureTestingModule({
@@ -18,7 +18,7 @@ describe('HomeComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	/* it('should create', () => {
 		expect(component).toBeTruthy();
-	});
+	}); */
 });
