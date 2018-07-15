@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/env-const';
-import { ImgClass } from '../../contracts/models/img.class';
+import { DataInterface } from '../../contracts/interfaces/data-interface';
 
 @Injectable()
 export class SearchImgsService {
@@ -15,7 +15,7 @@ export class SearchImgsService {
 
 	searchByTerm(text: string) {
 		const url: string = (`${environment.urlPrefix}/search/${text}`).toString();
-		return this.httpCli.get<{data: ImgClass[]}>(url, {
+		return this.httpCli.get<DataInterface>(url, {
 			observe: 'body',
 			responseType: 'json'
 		});

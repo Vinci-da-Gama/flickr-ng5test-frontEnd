@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/do';
 
 import { environment } from '../../environments/env-const';
-import { ImgClass } from '../../contracts/models/img.class';
+import { DataInterface } from '../../contracts/interfaces/data-interface';
 
 @Injectable()
 export class ImgsService {
@@ -16,7 +16,7 @@ export class ImgsService {
 
 	fetchInitialImages() {
 		const url: string = (`${environment.urlPrefix}/publicseed`).toString();
-		return this.httpCli.get<{data: ImgClass[]}>(url, {
+		return this.httpCli.get<DataInterface>(url, {
 			observe: 'body',
 			responseType: 'json'
 		});
