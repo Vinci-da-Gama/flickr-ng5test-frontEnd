@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onSubmit(f: FormGroup) {
+		this.loaderService.weatherShowLoader.next(true);
 		const term = f.value.searchTermInput;
 		this.store.dispatch(new imgsActions.SearchImages(term));
 		this.searchForm.reset();

@@ -19,7 +19,6 @@ const initImgsState: ImgsState = {
 export const imgsReducer = (state: ImgsState = initImgsState, action: imgsActions.ImgsActions) => {
 	switch (action.type) {
 		case (imgsActions.SET_IMAGES):
-			console.log('22 -- ', action.payload);
 			return {
 				...state,
 				imgs: action.payload

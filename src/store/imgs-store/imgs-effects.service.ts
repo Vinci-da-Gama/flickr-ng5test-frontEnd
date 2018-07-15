@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
@@ -44,8 +43,7 @@ export class ImgsEffects {
 		return [...res.data];
 	})
 	.map((images) => {
-		// this.loaderService.weatherShowLoader.next(false);
-		console.log('47 -- ', images);
+		this.loaderService.weatherShowLoader.next(false);
 		if (!images) {
 			return null;
 		} else {
@@ -61,8 +59,7 @@ export class ImgsEffects {
 		public actions$: Actions,
 		private imgsService: ImgsService,
 		private loaderService: LoaderService,
-		private router: Router,
-		private store: Store<fromImgsReducer.ImgsFeatureState>
+		private router: Router
 	) {}
 
 }
