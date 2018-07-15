@@ -19,10 +19,10 @@
 			<div class="form-group">
 				<input class="form-control mr-sm-2" type="search" placeholder="Search..." formControlName="searchTermInput" required  aria-label="Search" />
 				<div class="text-danger" *ngIf="searchTermInput.errors && (searchTermInput.dirty || searchTermInput.touched)">
-					<p *ngIf="searchTermInput.errors.required">
+					<p *ngIf="searchTermInput.errors.required" class="my-1">
 						Search Term is required.
 					</p>
-					<p *ngIf="searchTermInput.errors.pattern">
+					<p *ngIf="searchTermInput.errors.pattern" class="my-1">
 						Please input valid Search Term.
 					</p>
 				</div>

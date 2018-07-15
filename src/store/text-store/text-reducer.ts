@@ -12,7 +12,7 @@ const initTextState: TextState = {
 	]
 }
 
-export const textReducer = (state: TextState = initTextState, action: tActions.TextAction) => {
+export function textReducer (state: TextState = initTextState, action: tActions.TextAction) {
 	switch (action.type) {
 		case (tActions.SET_TEXT):
 			return {
