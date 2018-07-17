@@ -19,6 +19,7 @@ export class ImgsEffects {
 		return this.imgsService.fetchInitialImages()
 	})
 	.map((res) => {
+		console.log('22 -- ', res);
 		return [...res.data];
 	})
 	.map((images) => {
@@ -40,6 +41,7 @@ export class ImgsEffects {
 		return this.imgsService.searchByTerm(action.payload);
 	})
 	.map((res) => {
+		console.log('44 -- ', res);
 		return [...res.data];
 	})
 	.map((images) => {

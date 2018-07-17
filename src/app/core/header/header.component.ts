@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/throttleTime';
 
 import { LoaderService } from '../../../services/loader/loader.service';
 import * as fromTextReducer from '../../../store/text-store/text-reducer';
@@ -13,13 +17,16 @@ import * as imgsActions from '../../../store/imgs-store/imgs-actions';
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
 	searchForm: FormGroup;
-	searchTermInput: FormControl;
 	private ALLWHITESPACE = /\S/;
 	staticTextState: Observable<fromTextReducer.TextState>;
 	isSHowLoader: Boolean = false;
+
+	searchTerm: null = null;
+	searchTermInput: FormControl = new FormControl();
+	searchCtrlStub: Subscription;
 
 	constructor(
 		private _fbr: FormBuilder,
@@ -34,6 +41,21 @@ export class HeaderComponent implements OnInit {
 		this.loaderService.weatherShowLoader.subscribe((isSHowLoader: Boolean) => {
 			this.isSHowLoader = isSHowLoader;
 		});
+		this.searchCtrlStub = this.searchTermInput.valueChanges
+			.debounceTime(1000)
+			.distinctUntilChanged()
+			.subscribe( (newTerm) => {
+				/* if (!newTerm || !this.ALLWHITESPACE.test(newTerm)) {
+					return;
+				} else {
+					this.loaderService.weatherShowLoader.next(true);
+					this.store.dispatch(new imgsActions.SearchImages(newTerm));
+					this.searchForm.reset();
+				} */
+				this.loaderService.weatherShowLoader.next(true);
+				this.store.dispatch(new imgsActions.SearchImages(newTerm));
+				this.searchForm.reset();
+			});
 	}
 
 	private createSearchFormControl() {
@@ -53,5 +75,9 @@ export class HeaderComponent implements OnInit {
 		const term = f.value.searchTermInput;
 		this.store.dispatch(new imgsActions.SearchImages(term));
 		this.searchForm.reset();
+	}
+
+	ngOnDestroy() {
+		this.searchCtrlStub.unsubscribe();
 	}
 }

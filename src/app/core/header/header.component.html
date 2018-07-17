@@ -17,7 +17,8 @@
 		</ul>
 		<form class="form-inline my-2 my-lg-0" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
 			<div class="form-group">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search..." formControlName="searchTermInput" required  aria-label="Search" />
+				<input class="form-control mr-sm-2" type="search" placeholder="Search..." formControlName="searchTermInput" 
+					required aria-label="Search" [(ngModel)]="searchTerm" />
 				<div class="text-danger" *ngIf="searchTermInput.errors && (searchTermInput.dirty || searchTermInput.touched)">
 					<p *ngIf="searchTermInput.errors.required" class="my-1">
 						Search Term is required.
