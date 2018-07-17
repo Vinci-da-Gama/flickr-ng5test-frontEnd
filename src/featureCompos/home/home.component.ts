@@ -8,7 +8,7 @@ import { LoaderService } from '../../services/loader/loader.service';
 
 @Component({
 	selector: 'app-home',
-	templateUrl: './home.component.html'
+	templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
 

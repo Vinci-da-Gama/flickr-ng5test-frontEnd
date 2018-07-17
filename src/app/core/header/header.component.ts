@@ -45,16 +45,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 			.debounceTime(1000)
 			.distinctUntilChanged()
 			.subscribe( (newTerm) => {
-				/* if (!newTerm || !this.ALLWHITESPACE.test(newTerm)) {
+				if (!newTerm || !this.ALLWHITESPACE.test(newTerm)) {
 					return;
 				} else {
 					this.loaderService.weatherShowLoader.next(true);
 					this.store.dispatch(new imgsActions.SearchImages(newTerm));
 					this.searchForm.reset();
-				} */
-				this.loaderService.weatherShowLoader.next(true);
-				this.store.dispatch(new imgsActions.SearchImages(newTerm));
-				this.searchForm.reset();
+				}
 			});
 	}
 
